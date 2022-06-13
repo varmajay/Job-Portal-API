@@ -130,22 +130,26 @@ class HrProfileAPI(RetrieveUpdateAPIView):
     serializer_class = UserProfileSerializer
 
 class JobPostAPI(CreateAPIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = JobSerializer
 
 
 
 class JobViewAPI(ListAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Jobs.objects.all()
     serializer_class = JobSerializer
 
 
 
 class JobEditAPI(RetrieveUpdateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Jobs.objects.all()
     serializer_class = JobSerializer
 
 
 class JobDeleteAPI(GenericAPIView):
+    permission_classes = [IsAuthenticated]
     def get_object(self, pk):
         try:
             return Jobs.objects.get(pk=pk)
@@ -164,6 +168,7 @@ class JobDeleteAPI(GenericAPIView):
     
 
 class ApplicationHr(ListAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Application.objects.all()
     serializer_class = ApplicationSerializer
 # ---------------------------Job-seeker-----------------------------------
